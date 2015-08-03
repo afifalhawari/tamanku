@@ -1,5 +1,4 @@
-angular.module('tamanku.controllers', [])
-
+angular.module('tamanku')
 .controller('HomeController', function($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
@@ -42,7 +41,7 @@ angular.module('tamanku.controllers', [])
 })
 
 .controller('TamanController', function($scope) {
-  $scope.playlists = [
+  $scope.tamans = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
     { title: 'Dubstep', id: 3 },
