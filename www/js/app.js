@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('tamanku', ['ionic'])
+angular.module('tamanku', ['ionic', 'tamanku.controllers', 'tamanku.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -60,11 +60,11 @@ angular.module('tamanku', ['ionic'])
     })
 
   .state('app.single', {
-    url: '/tamans/:playlistId',
+    url: '/tamans/:tamanNo',
     views: {
       'menuContent': {
         templateUrl: 'templates/taman.html',
-        controller: 'DetailController'
+        controller: 'TamanDetailController'
       }
     }
   })
@@ -73,8 +73,7 @@ angular.module('tamanku', ['ionic'])
     url: '/favorite',
     views: {
       'menuContent': {
-        templateUrl: 'templates/favorite.html',
-        controller: 'DetailController'
+        templateUrl: 'templates/favorite.html'
       }
     }
   });

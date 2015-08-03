@@ -1,9 +1,11 @@
-<ion-view view-title="Playlists">
+<ion-view view-title="Taman List">
   <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="taman in tamans" href="#/app/tamans/{{taman.id}}">
-        {{taman.title}}
-      </ion-item>
-    </ion-list>
+    <div class="card" ng-repeat="taman in tamans" >
+      <a class="item item-thumbnail-left" href="#/app/tamans/{{taman.no}}">
+        <img ng-src="{{taman.foto}}" alt="">
+        <h2>{{taman.nama}}</h2>
+        <p>{{taman.lokasi}}</p>
+      </a>
+    </div>
   </ion-content>
 </ion-view>

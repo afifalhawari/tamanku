@@ -1,4 +1,4 @@
-angular.module('tamanku')
+angular.module('tamanku.controllers', [])
 .controller('HomeController', function($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
@@ -44,16 +44,11 @@ angular.module('tamanku')
   };
 })
 
-.controller('TamanController', function($scope) {
-  $scope.tamans = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+.controller('TamanController', function($scope, Tamans) {
+  $scope.tamans = Tamans.all();
 })
 
-.controller('DetailController', function($scope, $stateParams) {
+.controller('TamanDetailController', function($scope, $stateParams, Tamans) {
+  console.log($stateParams.tamanNo);
+  $scope.taman = Tamans.get($stateParams.tamanNo);
 });
