@@ -38,6 +38,10 @@ angular.module('tamanku')
       $scope.closeLogin();
     }, 1000);
   };
+
+  $scope.goToFavorite = function(){
+    $location.path("#/app/favorite")
+  };
 })
 
 .controller('TamanController', function($scope) {

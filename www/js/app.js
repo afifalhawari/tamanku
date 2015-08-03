@@ -67,7 +67,18 @@ angular.module('tamanku', ['ionic'])
         controller: 'DetailController'
       }
     }
+  })
+
+  .state('app.favorite', {
+    url: '/favorite',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/favorite.html',
+        controller: 'DetailController'
+      }
+    }
   });
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/tamans');
 });
