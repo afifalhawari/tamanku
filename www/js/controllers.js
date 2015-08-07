@@ -47,9 +47,43 @@ angular.module('tamanku.controllers', [])
 .controller('TamanController', function($scope, $ionicLoading, Tamans) {
   $scope.tamans = Tamans.all();
 
-  $scope.mapCreated = function(map) {
-    $scope.map = map;
+  function initialize() {
+    mapElement = document.getElementById('map');
+    defaultLocation = new google.maps.LatLng(-6.20603, 106.82088);
+    var mapOptions = {
+      center: defaultLocation,
+      zoom: 16,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    $scope.map = new google.maps.Map(mapElement, mapOptions);
+
+    // Stop the side bar from dragging when mousedown/tapdown on the map
+    google.maps.event.addDomListener(mapElement, 'mousedown', function (e) {
+      e.preventDefault();
+      return false;
+    });
+
+    $scope.addLocation(-6.20603, 106.82088, 'VT');
+
+    var tamans = $scope.tamans;
+    for(var i = 0; i < tamans.length; i++){
+      if(tamans[i].lon && tamans[i].lat){
+        $scope.addLocation(tamans[i].lat, tamans[i].lon, tamans[i].nama);
+      }
+    }
   };
+
+  $scope.addLocation = function(latitude, longitude, title){
+    console.log("Adding " + latitude + " - " + longitude + ":" + title);
+    position = new google.maps.LatLng(latitude, longitude);
+    newMarker = new google.maps.Marker({
+      position: position,
+      map: $scope.map,
+      title: title
+    });
+  };
+
+  angular.element(document).ready(initialize);
 
   $scope.centerOnMe = function () {
     console.log("Centering");
